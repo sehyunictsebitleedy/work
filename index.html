@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEHYUN ICT — Design Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#060D1F;--navy2:#0B1630;--navy3:#0F1E40;
+  --blue:#1A4FA0;--sky:#3B8AE0;--cyan:#00C9E0;
+  --white:#F0F5FF;--gray:#8899BB;--mid:#C0CEEA;
+  --card:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'Outfit',sans-serif;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:72px;background:rgba(6,13,31,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
+.nav-logo span{color:var(--cyan)}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--mid);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.04em;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--cyan)!important;color:var(--navy)!important;padding:8px 22px;border-radius:4px;font-weight:600!important}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 60px 200px;overflow:hidden}
+#hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(58,138,224,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(58,138,224,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
+.hero-orb{position:absolute;top:-10%;right:-5%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,201,224,.12) 0%,rgba(26,79,160,.08) 40%,transparent 70%);pointer-events:none}
+.hero-orb2{position:absolute;bottom:-20%;left:20%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(26,79,160,.1) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:700px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,201,224,.1);border:1px solid rgba(0,201,224,.3);padding:6px 16px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.1em;color:var(--cyan);text-transform:uppercase;margin-bottom:32px;animation:fadeUp .6s ease both}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:28px;animation:fadeUp .6s .1s ease both}
+.accent{background:linear-gradient(135deg,var(--cyan) 0%,var(--sky) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:var(--mid);max-width:520px;line-height:1.8;margin-bottom:48px;animation:fadeUp .6s .2s ease both}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.btn-primary{background:var(--cyan);color:var(--navy);padding:14px 32px;border-radius:6px;font-weight:700;font-size:.95rem;letter-spacing:.03em;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 24px rgba(0,201,224,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 32px rgba(0,201,224,.45)}
+.btn-outline{border:1px solid var(--border);color:var(--white);padding:14px 32px;border-radius:6px;font-weight:500;font-size:.95rem;text-decoration:none;background:transparent;transition:border-color .2s,background .2s;display:flex;align-items:center;gap:8px}
+.btn-outline:hover{border-color:var(--sky);background:rgba(58,138,224,.07)}
+.hero-tags{position:absolute;right:60px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:1;animation:fadeUp .8s .4s ease both}
+.tech-tag{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(10px);padding:10px 18px;border-radius:8px;font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:10px;transition:border-color .2s,color .2s;cursor:default}
+.tech-tag:hover{border-color:var(--cyan);color:var(--white)}
+.tech-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(6,13,31,.7);backdrop-filter:blur(10px);z-index:1}
+.stat-item{padding:28px 40px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--white);line-height:1;margin-bottom:4px}
+.stat-num span{color:var(--cyan)}
+.stat-label{font-size:.78rem;color:var(--gray);letter-spacing:.05em}
+
+/* SECTION COMMONS */
+section{padding:120px 60px;position:relative}
+.section-label{font-size:.74rem;font-weight:700;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-label::before{content:'';width:32px;height:1px;background:var(--cyan)}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.section-desc{color:var(--mid);font-size:1rem;max-width:520px;line-height:1.75}
+
+/* ABOUT */
+#about{background:var(--navy2)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{position:relative}
+.about-card-main{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;position:relative;overflow:hidden}
+.about-card-main::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--sky),transparent)}
+.about-year{font-family:'Syne',sans-serif;font-size:5rem;font-weight:800;color:rgba(0,201,224,.1);line-height:1;margin-bottom:16px}
+.about-mission{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;line-height:1.4;margin-bottom:16px}
+.about-desc-text{color:var(--mid);font-size:.9rem;line-height:1.8}
+.about-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.about-badge{background:rgba(0,201,224,.1);border:1px solid rgba(0,201,224,.2);padding:5px 14px;border-radius:100px;font-size:.78rem;color:var(--cyan);font-weight:600}
+.about-floating{position:absolute;bottom:-20px;right:-20px;background:linear-gradient(135deg,var(--blue),#0D3A7A);border:1px solid rgba(58,138,224,.3);border-radius:12px;padding:20px 24px;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.about-floating-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--white);line-height:1}
+.about-floating-num span{color:var(--cyan)}
+.about-floating-label{font-size:.75rem;color:var(--mid);margin-top:4px}
+.about-points{display:flex;flex-direction:column;gap:24px;margin-top:40px}
+.about-point{display:flex;gap:20px;align-items:flex-start}
+.point-icon{width:48px;height:48px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:var(--card);border:1px solid var(--border)}
+.point-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:6px}
+.point-desc{color:var(--mid);font-size:.88rem;line-height:1.65}
+
+/* SERVICE */
+#service{background:var(--navy)}
+.service-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 36px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:default}
+.service-card:hover{border-color:rgba(0,201,224,.35);transform:translateY(-4px)}
+.service-num{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(255,255,255,.04);line-height:1;margin-bottom:-10px}
+.service-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px}
+.service-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:12px}
+.service-desc{color:var(--mid);font-size:.88rem;line-height:1.75;margin-bottom:24px}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px}
+.service-tag{background:rgba(255,255,255,.05);border:1px solid var(--border);padding:4px 12px;border-radius:4px;font-size:.75rem;color:var(--gray);font-weight:500}
+.service-arrow{position:absolute;bottom:32px;right:32px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.85rem;transition:all .3s}
+.service-card:hover .service-arrow{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+
+/* STATS */
+#stats{background:linear-gradient(135deg,var(--navy3) 0%,#081428 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.stats-cell{background:var(--card);padding:40px;border:1px solid var(--border)}
+.stats-cell:first-child{border-radius:12px 0 0 0}.stats-cell:nth-child(2){border-radius:0 12px 0 0}.stats-cell:nth-child(3){border-radius:0 0 0 12px}.stats-cell:last-child{border-radius:0 0 12px 0}
+.stats-big{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;line-height:1;margin-bottom:8px}
+.stats-big span{color:var(--cyan)}
+.stats-name{color:var(--gray);font-size:.85rem;font-weight:500}
+
+/* PROJECT */
+#project{background:var(--navy2)}
+.project-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.view-all{color:var(--cyan);font-size:.85rem;font-weight:600;text-decoration:none;letter-spacing:.05em;display:flex;align-items:center;gap:6px;transition:gap .2s}
+.view-all:hover{gap:10px}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s}
+.project-card:hover{border-color:rgba(58,138,224,.4);transform:translateY(-4px)}
+.project-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.project-body{padding:24px}
+.project-category{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.project-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:10px;line-height:1.35}
+.project-meta{display:flex;gap:16px}
+.project-meta span{font-size:.78rem;color:var(--gray);display:flex;align-items:center;gap:5px}
+
+/* PARTNER */
+#partner{background:var(--navy);border-top:1px solid var(--border);text-align:center;padding:80px 60px}
+.partner-label{color:var(--gray);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:40px}
+.partner-logos{display:flex;gap:0;flex-wrap:wrap;justify-content:center}
+.partner-logo{padding:22px 36px;border:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--gray);letter-spacing:.06em;transition:color .2s,background .2s;margin:-1px 0 0 -1px}
+.partner-logo:hover{color:var(--white);background:var(--card)}
+
+/* CONTACT */
+#contact{background:var(--navy2)}
+.contact-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start}
+.contact-info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:40px}
+.contact-info-header{background:linear-gradient(135deg,var(--blue),#0D3A7A);padding:24px 28px}
+.contact-info-header h4{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+.contact-info-header p{color:var(--mid);font-size:.82rem;margin-top:4px}
+.contact-row{display:flex;gap:16px;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border)}
+.contact-row:last-child{border-bottom:none}
+.contact-icon{width:36px;height:36px;border-radius:8px;background:rgba(0,201,224,.1);border:1px solid rgba(0,201,224,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.contact-row-label{font-size:.75rem;color:var(--gray);margin-bottom:2px}
+.contact-row-val{font-size:.88rem;color:var(--white);font-weight:500}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;position:relative}
+.contact-form::before{content:'';display:block;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--sky),transparent);border-radius:16px 16px 0 0}
+.form-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:8px}
+.form-sub{color:var(--mid);font-size:.88rem;margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-label{font-size:.78rem;font-weight:600;color:var(--mid);letter-spacing:.04em}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--white);font-family:'Outfit',sans-serif;font-size:.9rem;width:100%;transition:border-color .2s;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:var(--cyan);background:rgba(0,201,224,.05)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(136,153,187,.5)}
+.form-textarea{resize:none;height:110px;line-height:1.6}
+.form-select{color:var(--gray)}
+.form-submit{width:100%;padding:15px;background:var(--cyan);color:var(--navy);border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:4px;box-shadow:0 0 24px rgba(0,201,224,.25)}
+.form-submit:hover{opacity:.9;transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid var(--border);padding:48px 60px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.05em}
+.footer-logo span{color:var(--cyan)}
+.footer-copy{font-size:.8rem;color:var(--gray)}
+
+/* NOTE */
+.design-note{position:fixed;bottom:24px;right:24px;z-index:200;background:rgba(6,13,31,.95);border:1px solid rgba(0,201,224,.4);border-radius:12px;padding:16px 20px;font-size:.78rem;color:var(--mid);max-width:240px;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.design-note strong{color:var(--cyan);display:block;margin-bottom:4px;font-size:.82rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div>SEHYUN<span>ICT</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#service">Service</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#partner">Partner</a></li>
+    <li><a href="#contact" class="nav-cta">문의하기</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Smarter IT Solution Provider</div>
+    <h1 class="hero-title">기술로 연결하고<br><span class="accent">혁신을 설계합니다</span></h1>
+    <p class="hero-sub">세현아이씨티는 SI 개발·GIS 솔루션·IT 컨설팅 전문 기업입니다.<br>고객의 문제를 정확히 이해하고, 최적의 기술로 해결합니다.</p>
+    <div class="hero-btns">
+      <a href="#service" class="btn-primary">서비스 보기 →</a>
+      <a href="#contact" class="btn-outline"><span style="color:var(--cyan)">✦</span> 무료 상담하기</a>
+    </div>
+  </div>
+  <div class="hero-tags">
+    <div class="tech-tag"><div class="tech-dot" style="background:#4DB8FF"></div>SI / 시스템 통합 개발</div>
+    <div class="tech-tag"><div class="tech-dot" style="background:#00C9E0"></div>GIS · 공간정보 솔루션</div>
+    <div class="tech-tag"><div class="tech-dot" style="background:#7C5BE0"></div>SmartGeoKit</div>
+    <div class="tech-tag"><div class="tech-dot" style="background:#3BE087"></div>IT 컨설팅</div>
+    <div class="tech-tag"><div class="tech-dot" style="background:#E0873B"></div>공공 · 민간 · 금융</div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">20<span>+</span></div><div class="stat-label">Years of Experience</div></div>
+    <div class="stat-item"><div class="stat-num">200<span>+</span></div><div class="stat-label">Projects Completed</div></div>
+    <div class="stat-item"><div class="stat-num">50<span>+</span></div><div class="stat-label">Partner Companies</div></div>
+    <div class="stat-item"><div class="stat-num">98<span>%</span></div><div class="stat-label">Client Satisfaction</div></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-card-main reveal">
+        <div class="about-year">2003</div>
+        <div class="about-mission">IT 기술 기반의<br>스마트 솔루션 파트너</div>
+        <p class="about-desc-text">세현아이씨티는 공공·금융·민간 분야에서 20년 이상 쌓아온 기술 역량과 실전 경험으로, 고객의 비즈니스 목표를 실현하는 최적의 IT 솔루션을 제공합니다.</p>
+        <div class="about-badge-row">
+          <div class="about-badge">ISO 인증</div>
+          <div class="about-badge">공공 SI 전문</div>
+          <div class="about-badge">GIS 특화</div>
+        </div>
+      </div>
+      <div class="about-floating">
+        <div class="about-floating-num">200<span>+</span></div>
+        <div class="about-floating-label">수행 프로젝트</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">About Us</div>
+      <h2 class="section-title reveal">신뢰를 쌓고<br>함께 성장합니다</h2>
+      <p class="section-desc reveal reveal-delay-1" style="margin-bottom:40px">단순한 개발 파트너를 넘어, 고객의 비즈니스를 깊이 이해하고 장기적인 성장을 함께 설계하는 IT 전략 파트너입니다.</p>
+      <div class="about-points">
+        <div class="about-point reveal reveal-delay-1">
+          <div class="point-icon">🎯</div>
+          <div><div class="point-title">도메인 특화 전문성</div><div class="point-desc">공공행정·지리정보·금융·물류 등 분야별 도메인 지식을 바탕으로 실효성 있는 솔루션을 설계합니다.</div></div>
+        </div>
+        <div class="about-point reveal reveal-delay-2">
+          <div class="point-icon">⚡</div>
+          <div><div class="point-title">검증된 기술 역량</div><div class="point-desc">Java·Python·GIS 엔진부터 클라우드·API 연동까지 폭넓은 기술 스택으로 복잡한 요구사항을 해결합니다.</div></div>
+        </div>
+        <div class="about-point reveal reveal-delay-3">
+          <div class="point-icon">🤝</div>
+          <div><div class="point-title">납기 준수와 품질 보증</div><div class="point-desc">체계적인 프로젝트 관리로 일정과 품질을 동시에 지키며, 오픈 후에도 지속적인 유지보수를 지원합니다.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="service">
+  <div class="service-header">
+    <div><div class="section-label">Our Services</div><h2 class="section-title reveal">전문 서비스 영역</h2></div>
+    <p class="section-desc reveal" style="max-width:360px">고객의 규모와 목적에 맞는 최적의 서비스 조합을 제안합니다.</p>
+  </div>
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon" style="background:rgba(0,201,224,.12)">💻</div>
+      <div class="service-title">SI · 시스템 통합 개발</div>
+      <p class="service-desc">공공기관·기업의 업무 시스템, 포털, ERP, 모바일 앱까지 전 주기 개발을 수행합니다. 기획부터 운영까지 원스톱으로 진행합니다.</p>
+      <div class="service-tags"><div class="service-tag">Java / Spring</div><div class="service-tag">React</div><div class="service-tag">MSA</div><div class="service-tag">클라우드</div></div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <div class="service-icon" style="background:rgba(58,138,224,.12)">🗺️</div>
+      <div class="service-title">GIS · 공간정보 솔루션</div>
+      <p class="service-desc">자체 개발 GIS 엔진 SmartGeoKit을 기반으로 지도 플랫폼, 공간 분석, CAD 뷰어 등 공간정보 특화 솔루션을 제공합니다.</p>
+      <div class="service-tags"><div class="service-tag">SmartGeoKit</div><div class="service-tag">2D GIS</div><div class="service-tag">CAD View</div><div class="service-tag">공간분석</div></div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <div class="service-icon" style="background:rgba(124,91,224,.12)">📊</div>
+      <div class="service-title">IT 컨설팅 · 솔루션 기획</div>
+      <p class="service-desc">디지털 전환 전략 수립부터 아키텍처 설계, 시스템 진단까지 기술 컨설팅으로 최적의 IT 투자 방향을 제시합니다.</p>
+      <div class="service-tags"><div class="service-tag">DX 전략</div><div class="service-tag">아키텍처</div><div class="service-tag">시스템 진단</div></div>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="section-label">Track Record</div>
+      <h2 class="section-title reveal">숫자로 증명하는<br>세현아이씨티</h2>
+      <p class="section-desc reveal reveal-delay-1" style="margin-top:16px">20년 이상의 현장 경험과 200건이 넘는 수행 실적이 우리의 경쟁력입니다.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stats-cell"><div class="stats-big">200<span>+</span></div><div class="stats-name">수행 프로젝트</div></div>
+      <div class="stats-cell"><div class="stats-big">20<span>년+</span></div><div class="stats-name">업력</div></div>
+      <div class="stats-cell"><div class="stats-big">50<span>+</span></div><div class="stats-name">협력 파트너사</div></div>
+      <div class="stats-cell"><div class="stats-big">98<span>%</span></div><div class="stats-name">납기 준수율</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="project-header">
+    <div><div class="section-label">Recent Projects</div><h2 class="section-title reveal">주요 수행 실적</h2></div>
+    <a href="#" class="view-all reveal">전체 프로젝트 보기 →</a>
+  </div>
+  <div class="project-grid">
+    <div class="project-card reveal">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#0D2A5A,#1A4FA0)">🏛️</div>
+      <div class="project-body">
+        <div class="project-category">공공 · GIS</div>
+        <div class="project-name">국토부 공간정보 포털 고도화</div>
+        <div class="project-meta"><span>📅 2024</span><span>🏷 GIS · Java · Spring</span></div>
+      </div>
+    </div>
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#0A3A50,#0E7490)">🏦</div>
+      <div class="project-body">
+        <div class="project-category">금융 · SI</div>
+        <div class="project-name">저축은행 차세대 뱅킹 시스템</div>
+        <div class="project-meta"><span>📅 2023</span><span>🏷 Java · MSA · Oracle</span></div>
+      </div>
+    </div>
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#2A1A5A,#7C3AED)">🗺️</div>
+      <div class="project-body">
+        <div class="project-category">공공 · 솔루션</div>
+        <div class="project-name">지자체 스마트시티 플랫폼 구축</div>
+        <div class="project-meta"><span>📅 2023</span><span>🏷 SmartGeoKit · React</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partner">
+  <div class="partner-label">신뢰하는 협력사 및 파트너</div>
+  <div class="partner-logos">
+    <div class="partner-logo">ESRI Korea</div><div class="partner-logo">Oracle</div>
+    <div class="partner-logo">Microsoft</div><div class="partner-logo">AWS</div>
+    <div class="partner-logo">Kakao</div><div class="partner-logo">Naver Cloud</div>
+    <div class="partner-logo">한국국토정보공사</div><div class="partner-logo">국토교통부</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title reveal">함께 시작할 준비가<br>되어 있습니다</h2>
+      <p class="section-desc reveal reveal-delay-1" style="margin-top:16px">프로젝트 규모에 관계없이 먼저 이야기 나눠보세요. 빠르게 검토 후 연락드립니다.</p>
+      <div class="contact-info-card reveal reveal-delay-2">
+        <div class="contact-info-header"><h4>세현아이씨티 (SEHYUN ICT)</h4><p>평일 09:00 – 18:00 응대</p></div>
+        <div>
+          <div class="contact-row"><div class="contact-icon">📞</div><div><div class="contact-row-label">전화</div><div class="contact-row-val">070-4047-8955</div></div></div>
+          <div class="contact-row"><div class="contact-icon">✉️</div><div><div class="contact-row-label">이메일</div><div class="contact-row-val">asset.manager@sehyunict.com</div></div></div>
+          <div class="contact-row"><div class="contact-icon">📍</div><div><div class="contact-row-label">주소</div><div class="contact-row-val">경기도 화성시 동탄기흥로 557, 1901호</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-1">
+      <div class="form-title">프로젝트 문의하기</div>
+      <p class="form-sub">간단한 정보를 남겨주시면 1~2 영업일 내로 연락드립니다.</p>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">이름 *</label><input class="form-input" type="text" placeholder="홍길동"></div>
+        <div class="form-group"><label class="form-label">회사명</label><input class="form-input" type="text" placeholder="(주)회사명"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">연락처 *</label><input class="form-input" type="tel" placeholder="010-0000-0000"></div>
+        <div class="form-group"><label class="form-label">이메일</label><input class="form-input" type="email" placeholder="hello@company.com"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">문의 유형</label>
+        <select class="form-select"><option>SI / 개발 외주</option><option>GIS 솔루션</option><option>SmartGeoKit</option><option>IT 컨설팅</option><option>기타</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">문의 내용 *</label>
+        <textarea class="form-textarea" placeholder="프로젝트 개요, 일정, 예산 등 간략히 작성해 주세요."></textarea>
+      </div>
+      <button class="form-submit">문의 보내기 ✦</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SEHYUN<span>ICT</span></div>
+  <div class="footer-copy">© 2024 SEHYUN ICT Co., Ltd. All rights reserved.</div>
+</footer>
+
+<div class="design-note">
+  <strong>🎨 디자인 시안 v1.0</strong>
+  하이브리드 구조 · 다크 프리미엄<br>실제 개발 전 검토용 목업입니다
+</div>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
