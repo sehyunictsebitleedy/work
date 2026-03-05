@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Aggravo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+
 @theme {
   /* ── 배경 계층 ── */
   --color-navy:   #060D1F;
@@ -18,7 +26,7 @@
 
   /* ── 폰트 ── */
   --font-heading: var(--font-syne), 'Syne', sans-serif;
-  --font-body:    var(--font-outfit), 'Outfit', sans-serif;
+  --font-body:    var(--font-outfit), 'Aggravo', sans-serif;
 
   /* ── 애니메이션 ── */
   --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
