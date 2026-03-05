@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { STATS } from '@/data/company';
 import CountUp from '@/components/ui/CountUp';
@@ -9,7 +10,6 @@ const TECH_TAGS = [
   { label: 'GIS · 공간정보 솔루션',  color: '#00C9E0' },
   { label: 'SmartGeoKit',            color: '#7C5BE0' },
   { label: 'SEbit AI',               color: '#3BE087' },
-  { label: '공공 · 민간 · 금융',      color: '#E0873B' },
 ];
 
 export default function HeroSection() {
@@ -18,6 +18,25 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ paddingTop: '120px', paddingBottom: '200px', paddingLeft: '60px', paddingRight: '60px' }}
     >
+      {/* 배경 이미지 */}
+      <Image
+        src="/hero-bg01.png"
+        alt=""
+        fill
+        priority
+        className="absolute inset-0 object-cover pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
+
+      {/* 어두운 오버레이 */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(6,13,31,0.85) 0%, rgba(6,13,31,0.7) 50%, rgba(6,13,31,0.8) 100%)',
+          zIndex: 1,
+        }}
+      />
+
       {/* 배경 그리드 */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -28,6 +47,7 @@ export default function HeroSection() {
           `,
           backgroundSize: '60px 60px',
           maskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent)',
+          zIndex: 2,
         }}
       />
 
@@ -39,6 +59,7 @@ export default function HeroSection() {
           width: '700px', height: '700px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(0,201,224,0.12) 0%, rgba(26,79,160,0.08) 40%, transparent 70%)',
+          zIndex: 3,
         }}
       />
       <div
@@ -48,11 +69,12 @@ export default function HeroSection() {
           width: '500px', height: '500px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(26,79,160,0.1) 0%, transparent 70%)',
+          zIndex: 3,
         }}
       />
 
       {/* 메인 콘텐츠 */}
-      <div className="relative z-10 max-w-[700px]" style={{ animation: 'fade-up 0.6s ease both' }}>
+      <div className="relative max-w-[700px]" style={{ zIndex: 10, animation: 'fade-up 0.6s ease both' }}>
         {/* 배지 */}
         <div
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-8"
@@ -119,12 +141,13 @@ export default function HeroSection() {
 
       {/* 테크 태그 (데스크탑만) */}
       <div
-        className="absolute hidden lg:flex flex-col gap-3 z-10"
+        className="absolute hidden lg:flex flex-col gap-3"
         style={{
           right: '60px',
           top: '50%',
           transform: 'translateY(-50%)',
           animation: 'fade-up 0.8s 0.4s ease both',
+          zIndex: 10,
         }}
       >
         {TECH_TAGS.map((tag) => (
@@ -155,33 +178,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* 통계 바 */}
-      <div
-        className="absolute bottom-0 left-0 right-0 grid grid-cols-2 lg:grid-cols-4 z-10"
-        style={{
-          borderTop:  '1px solid rgba(255,255,255,0.08)',
-          background: 'rgba(6,13,31,0.7)',
-          backdropFilter: 'blur(10px)',
-        }}
-      >
-        {STATS.map((stat, i) => (
-          <div
-            key={stat.label}
-            className="px-8 py-7"
-            style={{ borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}
-          >
-            <div
-              className="font-black text-[2.2rem] leading-none mb-1"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              <CountUp end={stat.value} suffix={stat.suffix} />
-            </div>
-            <div className="text-xs tracking-wider" style={{ color: '#8899BB' }}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+      
     </section>
   );
 }

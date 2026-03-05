@@ -44,7 +44,7 @@ export default function StatsSection() {
         borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}
     >
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 lg:gap-20 items-center">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-center">
         {/* 왼쪽 텍스트 */}
         <div>
           <SectionLabel>Track Record</SectionLabel>
@@ -52,12 +52,12 @@ export default function StatsSection() {
             <h2
               className="font-black leading-tight mt-2 mb-4"
               style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize:   'clamp(1.8rem, 3vw, 2.6rem)',
+                fontFamily: 'A2z',
+                fontSize:   'clamp(3rem, 3vw, 2.6rem)',
                 letterSpacing: '-0.02em',
               }}
             >
-              숫자로 증명하는<br />세현아이씨티
+              세현아이씨티<br />BRAND SEbit AI
             </h2>
           </RevealWrapper>
           <RevealWrapper delay={100}>
@@ -67,17 +67,7 @@ export default function StatsSection() {
           </RevealWrapper>
         </div>
 
-        {/* 오른쪽 통계 그리드 */}
-        <div className="grid grid-cols-2 rounded-xl overflow-hidden" style={{ gap: '2px', background: '#1A2A4A' }}>
-          {STATS.map((stat) => (
-            <StatCell
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={stat.label}
-            />
-          ))}
-        </div>
+       
       </div>
     </section>
   );

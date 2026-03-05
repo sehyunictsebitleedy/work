@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'A2z';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-1Thin.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
 @theme {
   /* ── 배경 계층 ── */
   --color-navy:   #060D1F;
@@ -17,7 +24,7 @@
   --color-muted:  #8899BB;
 
   /* ── 폰트 ── */
-  --font-heading: var(--font-syne), 'Syne', sans-serif;
+  --font-heading: var(--font-syne), 'A2z', sans-serif;
   --font-body:    var(--font-outfit), 'Outfit', sans-serif;
 
   /* ── 애니메이션 ── */
