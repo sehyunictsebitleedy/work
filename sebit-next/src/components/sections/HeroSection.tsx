@@ -9,7 +9,7 @@ const TECH_TAGS = [
   { label: 'GIS · 공간정보 솔루션',  color: '#00C9E0' },
   { label: 'SmartGeoKit',            color: '#7C5BE0' },
   { label: 'IT 컨설팅',               color: '#3BE087' },
-  { label: '공공 · 민간 · 금융',      color: '#E0873B' },
+  { label: 'SEbit AI',      color: '#E0873B' },
 ];
 
 export default function HeroSection() {
