@@ -10,7 +10,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         // 배경 이미지: /public/hero-bg.jpg (또는 .png) 에 이미지를 넣으세요
-        backgroundImage: "url('/hero-bg.jpg')",
+        backgroundImage: "url('/hero-bg.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -49,14 +49,13 @@ export default function HeroSection() {
         <h1
           className="font-black leading-[1.15] tracking-tight mb-6 text-white"
           style={{
-            fontFamily: 'var(--font-heading)',
+            fontFamily: 'FlightSansTitle',
             fontSize: 'clamp(2.6rem, 5vw, 4.2rem)',
             letterSpacing: '-0.02em',
             animation: 'fade-up 0.6s 0.1s ease both',
           }}
         >
-          기술로 연결하고<br />
-          혁신을 설계합니다
+          기술로 연결하고 혁신을 설계합니다
         </h1>
 
         {/* 서브텍스트 */}
@@ -85,35 +84,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 통계 바 */}
-      <div
-        className="absolute bottom-0 left-0 right-0 grid grid-cols-2 lg:grid-cols-4 z-10"
-        style={{
-          borderTop: '1px solid rgba(255,255,255,0.12)',
-          background: 'rgba(5, 15, 40, 0.65)',
-          backdropFilter: 'blur(12px)',
-        }}
-      >
-        {STATS.map((stat, i) => (
-          <div
-            key={stat.label}
-            className="px-8 py-6"
-            style={{
-              borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-            }}
-          >
-            <div
-              className="font-black text-[2rem] leading-none mb-1 text-white"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              <CountUp end={stat.value} suffix={stat.suffix} />
-            </div>
-            <div className="text-xs tracking-wider" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+      
     </section>
   );
 }

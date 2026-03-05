@@ -3,8 +3,8 @@ import RevealWrapper from '@/components/ui/RevealWrapper';
 
 const POINTS = [
   {
-    title: '도메인 특화 전문성',
-    desc:  '공공행정·지리정보·금융·물류 등 분야별 도메인 지식을 바탕으로 실효성 있는 솔루션을 설계합니다.',
+    title: 'AI 운영 플랫폼',
+    desc:  '다양한 LLM/RAG 기술을 결합하여 특화된 기업 데이터를 업무에 최적화, 고객 맞춤형 서비스 제공',
   },
   {
     title: '검증된 기술 역량',
