@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @font-face {
+<<<<<<< HEAD
     font-family: 'FlightSansTitle';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/FlightSans-Title.woff2') format('woff2');
     font-weight: normal;
@@ -15,6 +16,14 @@
 }
 
 
+=======
+    font-family: 'A2z';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-1Thin.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+>>>>>>> f140fc1edb9c051efdec06c8fe079c52f8d9efc6
 @theme {
   /* ── 배경 계층 ── */
   --color-navy:   #060D1F;
@@ -32,8 +41,13 @@
   --color-muted:  #8899BB;
 
   /* ── 폰트 ── */
+<<<<<<< HEAD
   --font-heading: var(--font-syne), 'FlightSansTitle', sans-serif;
   --font-body:    var(--font-outfit), 'KboDiamondGothic', sans-serif;
+=======
+  --font-heading: var(--font-syne), 'A2z', sans-serif;
+  --font-body:    var(--font-outfit), 'Outfit', sans-serif;
+>>>>>>> f140fc1edb9c051efdec06c8fe079c52f8d9efc6
 
   /* ── 애니메이션 ── */
   --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
